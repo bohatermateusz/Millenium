@@ -31,21 +31,16 @@ namespace WebApplication1.Controllers
 
         protected void CheckBox_Click(object sender, EventArgs e)
         {
-
-
             var dil = "en-US";
-            //var ci = new CultureInfo(dil); //TO_DO Route culture 
-            //Thread.CurrentThread.CurrentUICulture = ci;
-            //Thread.CurrentThread.CurrentCulture = ci;
-            //Session["culture"] = ci;
+            var ci = new CultureInfo(dil); 
+            Thread.CurrentThread.CurrentUICulture = ci;
+            Thread.CurrentThread.CurrentCulture = ci;
+            Session["culture"] = ci;
 
-            //Sets the cookie that is to be used by Global.asax
             HttpCookie cookie = new HttpCookie("CultureInfo");
             cookie.Value = dil;
             Response.Cookies.Add(cookie);
 
-            //Set the culture and reload the page for immediate effect. 
-            //Future effects are handled by Global.asax
             Thread.CurrentThread.CurrentCulture =
                 new CultureInfo(dil);
             Thread.CurrentThread.CurrentUICulture =
